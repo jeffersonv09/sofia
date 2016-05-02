@@ -1,0 +1,73 @@
+<div class="container" id="main-content">
+	<% if(flash && flash.err){ %>
+	<ul class="alert alert-success">
+		<% Object.keys(flash.err).forEach(function(error){ %>
+		<li><%- JSON.stringify(flash.err[error]) %></li>
+		<% }) %>
+	</ul>
+	<% } %>
+	<div class="row">
+		<div class="col-sm-3" role="complementary">
+			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+			 <ul class="nav bs-docs-sidenav">
+			  <li class="">
+			   <a href="articulo/nuevo">Usuarios</a>
+			    <ul class="nav">
+			     <li class=""><a href="#js-individual-compiled">Individual or compiled</a></li>
+			     <li><a href="#js-data-attrs">Data attributes</a></li> 
+			     <li class=""><a href="#js-programmatic-api">Programmatic API</a></li> 
+			    </ul>
+			   </li> 
+			   <li><a href="#modals">Área</a> 
+			   <li><a href="#transitions">Categoría</a></li> 
+			   <li><a href="#modals">Sección</a> 
+			   	<ul class="nav"> 
+			   		<li><a href="#modals-examples">Example</a></li> 
+			   		<li><a href="#modals-sizes">Example</a></li> 
+			   		<li><a href="#modals-remove-animation">Example</a></li> 
+			   		<li><a href="#modals-related-target">Example</a></li> 
+			   		<li><a href="#modals-usage">Example</a></li> 
+			   	</ul> 
+			   </li> 
+			   <li><a href="#modals">Artículos</a> 
+			   	<ul class="nav"> 
+			   		<li><a href="#modals-examples">Example</a></li> 
+			   		<li><a href="#modals-sizes">Example</a></li> 
+			   	</ul> 
+			   </li> 
+			</ul> 
+			<a class="back-to-top" href="#top"> Subir </a> 
+			</nav>
+		</div>
+		<div class="col-sm-9" role="main">
+			<div class="panel-item">
+    			<a href="/usuario/listado"><img src="/images/ico-light-blue-user.png"></a>
+    			<h4>Usuarios</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-folder.png"></a>
+    			<h4>Artículos</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-file.png"></a>
+    			<h4>Publicaciones</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-message.png"></a>
+    			<h4>Mensajes</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-comment.png"></a>
+    			<h4>Comentarios</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-like.png"></a>
+    			<h4>Likes</h4>
+	    	</div>
+	    	<div class="panel-item">
+				<a href="/usuario/index"><img src="/images/ico-light-blue-pin.png"></a>
+    			<h4>Pin</h4>
+	    	</div>
+		</div>
+	</div>
+</div>

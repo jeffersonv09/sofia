@@ -1,0 +1,33 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2" role="main">
+			<% if(seccion.length === 0){ %>
+			<div class="info-msg">
+				<div class="centered-text frame">
+					<img src="/images/ico-light-blue-library.png">
+					<h3>Hola, <%= req.session.Usuario.usuarioNombre %> </h3>
+					<h4>¡Es hora de crear sección!</h4>
+					<a class="btn btn-light-blue" href="/seccion/nueva">Crear sección</a>
+				</div>
+			</div>
+			<% } else{ %>
+			<div class="topic-list">
+				<div class="topic-list-header">
+					<h3><span class="glyphicon glyphicon-th-list"></span> Secciones
+						<a href="/seccion/nueva"><span id="ico-add"></span></a>
+					</h3>
+				</div>
+				<table class="table table-hover table-striped ">
+					<tbody>
+						<% _.each(seccion,function(seccion){ %>
+						<tr>
+							<td><a href="/articulo/listado/<%= seccion.id %>"><%= seccion.seccionNombre %></a></td>
+						</tr>
+						<% }); } %>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+	</div>
+</div>

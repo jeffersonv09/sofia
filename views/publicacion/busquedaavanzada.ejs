@@ -1,0 +1,68 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-xs-12 col-sm-offset-2">
+			<form class="form-horizontal formulario" role="form" action="crear" method="POST">
+				<div class="form-header">
+					<h3>Filtro de búsqueda</h3>
+				</div>
+				<div class="form-body">
+					<div class="control-group">
+						<div class="input-container">
+							<input type="input" name="txtPublicacionTitulo" id="txtPublicacionTitulo" required="required"/>
+							<label for="txtPublicacionTitulo">Titulo</label>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="input-container">
+							<input type="input" name="txtPublicacionEtiqueta" id="txtPublicacionEtiqueta" required="required"/>
+							<label for="txtPublicacionEtiqueta">Etiquetas</label>
+							<div class="bar"></div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="col-sm-3">Fecha de publicación</label>
+						<label class="col-sm-1" for="txt-filter-publication-since">Desde</label>
+						<div class="col-sm-3">
+							<input type="date" class="datepicker" value="02-16-2012" id="txt-filter-publication-since" >
+						</div>
+						<label class="col-sm-1" for="txt-filter-publication-until">Hasta</label>
+						<div class="col-sm-3">
+							<input type="date" class="datepicker" value="02-16-2012" id="txt-filter-publication-until" >
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="col-sm-2 xs-hidden" for="txt-filter-item-tags">Categoría</label>
+						<div class="col-sm-3 col-xs-12">
+							<input type="input" class="form-control" id="txt-filter-item-category" placeholder="Categoría">
+						</div>
+						<label class="col-sm-2">Tipo de publicación</label>
+						
+						<div class="col-sm-5 col-xs-12">
+							<div class="btn-group" role="group" aria-label="Difusión">
+								<button type="button" class="btn btn-default" id="everyone">
+								<img src="/images/ico-light-blue-world.png" width="32" class="img-responsive" alt="Enviar a todo público">
+								</button>
+								<button type="button" class="btn btn-default" id="target">
+								<img src="/images/ico-light-blue-target.png" width="32" class="img-responsive" alt="Enviar a público interesado">
+								</button>
+								<button type="button" class="btn btn-default" id="teamwork">
+								<img src="/images/ico-light-blue-teamwork.png" width="32" class="img-responsive" alt="Enviar a tu equipo de trabajo">
+								</button>
+								<button type="button" class="btn btn-default" id="department">
+								<img src="/images/ico-light-blue-department.png" width="32" class="img-responsive" alt="Enviar a tu departamento">
+								</button>
+								<input type="hidden" name="hfPublicacionDifusion" id="hfPublicacionDifusion">
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="button-container">
+							<button type="submit"><span>Buscar</span></button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

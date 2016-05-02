@@ -1,0 +1,28 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="categories">
+				<% if(area.length === 0){ %>
+				<div class="info-msg">
+					<div class="centered-text frame">
+			    		<img src="/images/ico-light-blue-add-folder.png">
+			    		<h3>Hola, <%= req.session.Usuario.usuarioNombre %> </h3>
+			    		<h4>¡Es hora de crear áreas!</h4>
+			    		<a class="btn btn-light-blue" href="/area/nueva">Crear área</a>
+			    		</div>
+		    	</div>
+				<%} else{ _.each(area,function(area){ %>
+				<div class="category-item">
+					<a href="/categoria/listado/<%=area.id%>">
+						<div class="category-container">
+						<img src="<%=area.areaImagenPath%>" alt="<%= area.areaNombre.toUpperCase().substring(0, 20) %>"></div>
+					</a>
+					<div class="category-footer">
+						<h3><%= area.areaNombre.toUpperCase() %></h3>
+					</div>
+				</div>
+				<% }); } %>
+			</div>
+		</div>
+	</div>
+</div>

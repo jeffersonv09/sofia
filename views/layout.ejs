@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sofía</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    
+    <!--  
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+        
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+            
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-tokenfield.css">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/custom.css">
+    <link rel="stylesheet" href="/styles/fileinput.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/loginStyle.css">
+    <link rel="stylesheet" href="/styles/tokenfield-typeahead.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            <img src="/images/logo-sofia.png" alt="Sofía" height="30px">
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/descubre">Descubre</a></li>
+            <li><a href="/explora">Explora</a></li>
+            <li><a href="/conoce">Conoce</a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Artículos, imagenes, archivos, anuncios...">
+            </div>
+            <img src="/images/ico-light-blue-search.png" width="25px">
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/publicacion/misaportes">Mis aportes</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre+' '+req.session.Usuario.usuarioApellido %>" height="32px" class="img-circle" id="login-avatar"> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/usuario/miperfil">Mi perfil</a></li>
+                <li><a href="/panelControl/principal">Panel de control</a></li>
+                <li><a href="/sesion/destruir">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+          </div>
+          </div>
+        </nav>
+        <nav class="navbar navbar-fixed-bottom">
+          <div class="container-fluid vertical-padding">
+            <div class="row padding">
+              <div class="col-xs-4 col-md-1 col-xs-offset-8 col-md-offset-10">
+                <a href="http://www.thecc.com.ve"  target="_blank"><img src="/images/logo-thecc96.png" class="img-responsive"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!--<nav class="navbar navbar-inverse navbar-fixed-bottom">
+          <div class="container-fluid vertical-padding">
+            <div class="row padding">
+              <div class="col-xs-2 col-md-1 col-md-offset-1">
+                <a href="/publicacion/nueva"><img src="/images/ico-light-blue-write.png" class="img-responsive"></a>
+              </div>
+              <div class="col-xs-2 col-md-1">
+                <a href="/categoria/listado/<%=req.session.Usuario.idDepartamento%>"><img src="/images/ico-light-blue-books.png" class="img-responsive"></a>
+              </div>
+              <div class="col-xs-2 col-md-1">
+                <a href="/publicacion/busquedaavanzada"><img src="/images/ico-light-blue-filter.png" class="img-responsive"></a>
+              </div>
+              <div class="col-xs-2 col-md-1">
+                <a href="#"><img src="/images/ico-light-blue-information.png"  class="img-responsive"></a>
+              </div>
+              <div class="col-xs-2 col-md-1 col-xs-offset-2 col-md-offset-5">
+                <a href="http://www.thecc.com.ve"  target="_blank"><img src="/images/logo-thecc64.png" class="img-responsive"></a>
+              </div>
+            </div>
+          </div>
+        </nav>-->
+    <%- body %>
+
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+        
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+      
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+          
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery-1.12.0.js"></script>
+    <script src="/js/bootstrap-tokenfield.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/fileinput.js"></script>
+    <script src="/js/fileinput_locale_es.js"></script>
+    <script src="/js/plugins/canvas-to-blob.js"></script>
+    <script src="/js/plugins/canvas-to-blob.min.js"></script>
+    <script src="/js/typeahead.bundle.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

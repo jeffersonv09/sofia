@@ -1,0 +1,50 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="categories">
+				<% if(publicacion.length === 0){ %>
+				<div class="info-msg">
+				<div class="centered-text frame">
+		    		<img src="/images/ico-light-blue-add-content.png" >
+		    		<h3>Hola, <%= req.session.Usuario.usuarioNombre %> </h3>
+		    		<h4>¡Es hora de crear la primera publicación de ésta categoría!</h4>
+		    		<a class="btn btn-light-blue" href="/publicacion/nueva">Crear publicación</a>
+		    	</div>
+		    </div>
+				<%}else{ _.each(publicacion,function(publicacion){ %>
+				<div class="category-item">
+					<a  href="/publicacion/mostrar/<%=publicacion.id%>">
+						<div class="category-container">
+							<div class="category-content">
+								<% if(publicacion.publicacionTipo == '1'){ %>
+								<p><%=publicacion.publicacionContenido%></p>
+								<% } else{ %>
+								<p><%=publicacion.publicacionDescripcion%></p>
+								<% } %>
+							</div>
+							<div class="category-image">
+								<% if(publicacion.publicacionTipo == 2){ %>
+								<img class="media-object" src="<%= publicacion.publicacionAdjuntoUrl1 %>" alt="<%= publicacion.publicacionTitulo %>" height="150">
+								<% } else{ %>
+								<img class="media-object" src="<%= publicacion.publicacionAdjuntoUrl2 %>" alt="<%= publicacion.publicacionTitulo %>" height="150">
+								<% } %>	
+							</div>
+						</div>
+					</a>
+					<div class="category-footer">
+						<h3><%=publicacion.publicacionTitulo.toUpperCase().substring(0, 20) %>
+							<% if(publicacion.publicacionTipo == '1'){ %>
+							<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+							<% } if(publicacion.publicacionTipo == '2'){ %>
+							<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+							<% } if(publicacion.publicacionTipo == '3'){ %>
+							<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+							<% } %>
+						</h3>
+					</div>
+				</div>
+				<% }); } %>
+			</div>
+		</div>
+	</div>
+</div>

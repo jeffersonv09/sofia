@@ -1,0 +1,32 @@
+<div id="contenido">
+	<% if(flash && flash.err){ %>
+          <ul class="alert alert-warning">
+            <% Object.keys(flash.err).forEach(function(error){ %>
+            <li><%- JSON.stringify(flash.err[error]) %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      <div class="container-login" >
+        <div class="card"></div>
+        <div class="card">
+          <div class="logo">
+            <img class="img-responsive" src="/images/logo-sofia.png">
+          </div>
+          <form action="/sesion/crearsesion" method="POST">
+            <div class="input-container">
+              <input type="input" name="txtUsuario" id="txtUsuario" required="required" />
+              <label for="usuario">Usuario</label>
+              <div class="bar"></div>
+            </div>
+            <div class="input-container">
+              <input type="password" name="txtContrasena" id="txtContrasena" required="required"/>
+              <label for="txtContrasena">Contraseña</label>
+              <div class="bar"></div>
+            </div>
+            <div class="button-container">
+              <button type="submit"><span>Entrar</span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

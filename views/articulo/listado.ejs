@@ -1,0 +1,64 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+
+			<% if(articulo.length === 0){ %>
+			<div class="info-msg">
+				<div class="centered-text frame">
+		    		<img src="/images/ico-light-blue-library.png">
+		    		<h3>Hola, <%= req.session.Usuario.usuarioNombre %> </h3>
+		    		<h4>¡Es hora de crear un nuevo artículo!</h4>
+		    		<a class="btn btn-light-blue" href="/articulo/nuevo">Crear artículo</a>
+		    		</div>
+	    	</div>
+			<% } else{ %>	
+			
+			<div class="topic-list">
+				<div class="topic-list-header">
+					<h3><span class="glyphicon glyphicon-file"></span> Artículos 
+						<a href="/articulo/nuevo"><span id="ico-add"></span></a>
+						<div class="pull-right">
+							<form class="form-topic-list" method="POST" action="ordenar">
+								<label for="listaarticuloOrdenar">Ordenar por</label>
+								<select id="listaarticuloOrdenar" name="listaarticuloOrdenar">
+									<option>Nombre</option>
+									<option>Fecha</option>
+									<option>Autor</option>
+								</select>
+							</form>
+						</div>
+					</h3>
+				</div>
+				<table class="table table-hover table-striped ">			
+					<thead>
+						<tr>
+							<td>Título</td>
+							<td>Autor</td>
+							<td>Creación</td>
+							<td>Actualización</td>
+						</tr>
+					</thead>	
+					<tbody>
+					<%  _.each(articulo,function(articulo){ %>		
+					<tr>
+						<td>
+							<a href="/articulo/mostrar/<%= articulo.id %>">
+								<%= articulo.articuloTitulo %>
+							</a>
+						</td>
+						<td><%= (articulo.articuloAutor.usuarioNombre == null ? '' : articulo.articuloAutor.usuarioNombre)+' '+(articulo.articuloAutor.usuarioApellido == null ? '' : articulo.articuloAutor.usuarioApellido) %>
+						</td>
+						<td><%= articulo.createdAt.toLocaleDateString()+" "+articulo.createdAt.toLocaleTimeString() %>
+						</td>
+						<td><%= articulo.updatedAt.toLocaleDateString()+" "+articulo.updatedAt.toLocaleTimeString() %>
+						</td>
+					</tr>	
+					<% }); } %>	
+					</tbody>											
+				</table>
+			</div>
+			
+		
+		</div>
+	</div>
+</div>

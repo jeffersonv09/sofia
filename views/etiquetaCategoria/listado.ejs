@@ -1,0 +1,31 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="categories">
+				<% if(etiquetaCategoria.length === 0){ %>
+				<div class="centered-text">
+		    		<img src="/images/ico-light-blue-add-folder.png">
+		    		<h3>Hola, <%= req.session.Usuario.usuarioNombre %> </h3>
+		    		<h4>Es hora de crear categorías de etiquetas</h4>
+		    		<a class="btn btn-light-blue" href="/etiquetaCategoria/nueva">Crear categoría de etiqueta</a>
+		    	</div>
+				<%} else{ _.each(etiquetaCategoria, function(etiquetaCategoria){ %>
+					<div >
+						<h3><%= etiquetaCategoria.etiquetaCategoriaNombre %></h3>
+						<h3><%= etiquetaCategoria.etiquetas %></h3>
+					</div>	
+				</div>
+				<% }); } %>
+				<% _.each(etiquetaCategoria.etiquetas, function(etiqueta){ %>
+					<div >
+						<h3><%= etiqueta.id %></h3>
+						<h3><%= etiqueta.etiquetaNombre %></h3>
+					</div>	
+				</div>
+				<% }); %>
+
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,78 @@
+<div class="container" id="main-content">
+  <div class="row">
+    <div class="col-sm-6 col-xs-12 col-sm-offset-3">
+      <div class="row light-blue">
+        <div class="item-header">
+          <h3><%= articulo.articuloTitulo %></h3>
+        </div>
+        <div class="item-content">
+          <%= articulo.articuloContenido %>
+        </div>
+        <div class="item-footer">
+          <div class="media-footer-info">
+              <%= (articulo.articuloAutor.usuarioNombre == null ? '' : articulo.articuloAutor.usuarioNombre)+' '+(articulo.articuloAutor.usuarioApellido == null ? '' : articulo.articuloAutor.usuarioApellido) %>,
+              <%= articulo.createdAt.toLocaleDateString()+" "+articulo.createdAt.toLocaleTimeString() %>
+
+            </div>
+              <% if(articulo.articuloAdjuntoUrl != null){ %>
+              <a href="<%= articulo.articuloAdjuntoUrl %>" target="_blank"> 
+                <span id="media-footer-download"></span>
+              </a>
+              <% }  %>
+          <span id="media-footer-pin"></span>
+          <span id="media-footer-comment"></span>
+          <span id="media-footer-like"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="media comment">
+        <div class="media-left">
+          <img class="media-object img-circle" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre %>" height="50"> 
+        </div>
+        <div class="media-body">
+        <form method="POST" action="/comentario/nuevo" enctype="multipart/form-data">
+          <div class="control-group comment-content">
+                  <textarea class="control" rows="3" id="textareaComentarioContenido" name="textareaComentarioContenido" placeholder="¿Qué piensas al respecto?"></textarea>
+                </div>
+                <input type="hidden" id="hfarticulo" name="hfarticulo" value="<%= articulo.id %>">
+                <div class="media-footer">
+                  <span id="comment-paperclic">
+                    <input type="file" name="filComentarioAdjunto" id="filComentarioAdjunto">
+                  </span>
+                  <a href="#" onclick="$(this).closest('form').submit()"><span id="comment-send"></span></a>
+                </div>
+        </form> 
+        </div>
+      </div>
+      <%_.each(articulo.articuloComentarios,function(comentario){ %>
+        <div class="media comment">
+          <div class="media-left">
+            <img class="media-object img-circle" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>" height="50"> 
+          </div>
+          <div class="media-body">
+            <div class="control-group comment-content">
+                    <p><%= comentario.comentarioContenido %></p>
+                  </div>
+                  <input type="hidden" value="<%= comentario.id %>">
+                  <div class="media-footer">
+                    <div class="media-footer-info">
+                <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>"><span id="media-footer-user"></span></a>
+                <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= comentario.createdAt.toLocaleDateString()+" "+comentario.createdAt.toLocaleTimeString() %>"><span id="media-footer-calendar"></span></a>
+              </div>
+                    <span id="media-footer-pin"></span>
+                    <span id="media-footer-like"></span>
+                    <% if(comentario.comentarioAdjuntoUrl != null){ %>
+                  <a href="<%= comentario.comentarioAdjuntoUrl %>"> 
+                    <span id="media-footer-pin"></span>
+                  </a>
+                  <% } %>
+                  </div>
+          </form> 
+          </div>
+        </div>
+      <% });  %>
+      </div>
+
+    </div>
+  </div>
+</div>

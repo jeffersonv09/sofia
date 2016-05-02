@@ -1,0 +1,453 @@
+<div id="banner-miperfil" >
+	<div class="container" id="main-content">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 col-xs-12" >
+				<form class="form-avatar" enctype="multipart/form-data" method="POST" action="/usuario/cargaravatar">
+					<div class="centered-text" >
+						<div id="my-profile">
+							<img src="<%= usuario.avatarUrl %>" alt="<%=usuario.usuarioNombre%>"  class="img-circle" height="200">
+							<br>
+							<label>
+								<%=(usuario.usuarioNombre == null ? '' : usuario.usuarioNombre)+' '+(usuario.usuarioApellido == null ? '' : usuario.usuarioApellido)%>
+							</label>
+						</div>
+						<div id="change-my-profile" class="kv-avatar center-block" style="width:200px">
+							<div id="close-change-my-profile" class="close fileinput-remove">×</div>
+					        <input id="avatar" name="avatar" type="file" class="file-loading">
+					    </div>
+
+					</div>
+				</form>
+			</div><!--
+			<div class="col-xs-12">
+				<nav class="navbar navbar-inverse ">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							</button>
+							
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#">Información <span class="sr-only">(current)</span></a></li>
+								<li><a href="/explora">Publicaciones</a></li>
+							</ul>
+							<span class="item-pin"><img src="/images/ico-light-blue-pin.png"> </span>
+							<span class="item-like"><img src="/images/ico-light-blue-star.png"> </span>
+							
+						</div>
+						
+					</div>
+				</nav>
+			</div>-->
+		</div>
+	</div>
+	</div>
+	
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 col-xs-12 panel">
+
+						<div class="row">
+							<div class="panel-container">
+							<div class="panel-left">
+								<form method="POST" action="/usuario/actualizar">
+									<div>
+									<img src="/images/ico-gray-cellphone.png" height="32" >
+									<input type="text" id="txtUsuarioTelefono" name="txtUsuarioTelefono" value="04260000000" disabled>
+								</div>
+								<div>
+									<img src="/images/ico-gray-phone.png" height="32" >
+									<input type="text" id="txtUsuarioTelefonoHabitacion" name="txtUsuarioTelefonoHabitacion" value="02610000000" disabled>
+								</div>
+								<div>
+									<img src="/images/ico-gray-mail.png" height="32">
+									<input type="email" id="txtUsuarioCorreo" name="txtUsuarioCorreo" disabled>
+								</div>
+								<div>
+									<img src="/images/ico-gray-address-pin.png" height="32">
+									<input id="txtUsuarioDireccion" name="txtUsuarioDireccion" disabled/>
+								</div>
+								</form>
+								
+							</div>
+							<div class="panel-center" id="personal-information"></div>
+							<div class="panel-right">
+								<div>
+									<input type="text" id="txtUsuarioRedesFacebook" name="txtUsuarioRedesFacebook" disabled>
+									<img src="/images/ico-facebook.png" height="32" >
+								</div>
+								<div>
+									<input type="text" id="txtUsuarioRedesTwitter" class="disabled" name="txtUsuarioRedesTwitter" disabled>
+									<img src="/images/ico-twitter.png" height="32" >
+								</div>
+								<div>
+									<input type="text" id="txtUsuarioRedesInstagram" name="txtUsuarioRedesInstagram" disabled>
+									<img src="/images/ico-instagram.png" height="32" >
+								</div>
+								<div>
+									<input type="text" id="txtUsuarioRedesLinkedIn" name="txtUsuarioRedesLinkedIn" disabled>
+									<img src="/images/ico-linkedin.png" height="32" >
+								</div>
+							</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="panel-container">
+
+							<div class="panel-head" id="work-experiencie">
+								<h4>Experiencia laboral</h4>
+							</div>
+							<div class="panel-form">
+								<form action="/experienciaLaboral/crear" method="POST">
+									<div>
+										<input class="panel-control" type="text" id="txtExperienciaLaboralEmpresa" name="txtExperienciaLaboralEmpresa" placeholder="Empresa">
+									</div>
+									<div>
+										<% var date=new Date().getFullYear(); %>
+										<select class="panel-control-select" id="selExperienciaLaboralDesde" name="selExperienciaLaboralDesde" >
+											<option value="0">Desde</option>
+											<% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%>                 
+							            </select>
+							            <select class="panel-control-select" id="selExperienciaLaboralHasta" name="selExperienciaLaboralHasta" >
+							            	<option value="0">Hasta</option>
+							            	<% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%>   
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtExperienciaLaboralCargo" name="txtExperienciaLaboralCargo" placeholder="Cargo">
+									</div>
+									<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+							</div>
+							<% _.each(experienciaLaboral,function(experienciaLaboral){ %>	
+							<div class="panel-form">
+									<div>
+										<input class="panel-control" type="text" id="txtExperienciaLaboralEmpresa" name="txtExperienciaLaboralEmpresa" value="<%= experienciaLaboral.experienciaLaboralEmpresa %>" disabled>
+									</div>
+									<div>
+										<select class="panel-control-select" id="selExperienciaLaboralDesde" name="selExperienciaLaboralDesde" disabled>
+							                <option value="<%= experienciaLaboral.experienciaLaboralDesde %>"><%= experienciaLaboral.experienciaLaboralDesde %></option>
+							            </select>
+							            <select class="panel-control-select" id="selExperienciaLaboralHasta" name="selExperienciaLaboralHasta" disabled>
+							                <option value="<%= experienciaLaboral.experienciaLaboralHasta %>"><%= experienciaLaboral.experienciaLaboralHasta %></option>
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtExperienciaLaboralCargo" name="txtExperienciaLaboralCargo" value="<%= experienciaLaboral.experienciaLaboralCargo %>" disabled>
+									</div>
+							</div>	
+							<% });  %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="panel-container">
+
+							<div class="panel-head" id="education">
+								<h4>Estudios</h4>
+							</div>
+							<div class="panel-form">
+								<form action="/educacion/crear" method="POST">
+									<div>
+										<input class="panel-control" type="text" id="txtEducacionInstituto" name="txtEducacionInstituto" placeholder="Instituto">
+									</div>
+									<div>
+										<select class="panel-control-select" id="selEducacionDesde" name="selEducacionDesde">
+											<option value="0">Desde</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+							            <select class="panel-control-select" id="selEducacionHasta" name="selEducacionHasta">
+							            	<option value="0">Hasta</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtEducacionTitulo" name="txtEducacionTitulo" placeholder="Título">
+									</div>
+									<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+							</div>
+							<% _.each(educacion,function(educacion){ %>	
+							<div class="panel-form">
+									<div>
+										<input class="panel-control" type="text" id="txtEducacionInstituto" name="txtEducacionInstituto" value="<%= educacion.educacionInstituto %>" disabled>
+									</div>
+									<div>
+										<select class="panel-control-select" id="selEducacionDesde" name="selEducacionDesde" disabled>
+							                <option value="<%= educacion.educacionDesde %>"><%= educacion.educacionDesde %></option>
+							            </select>
+							            <select class="panel-control-select" id="selEducacionHasta" name="selEducacionHasta" disabled>
+							                <option value="<%= educacion.educacionHasta %>"><%= educacion.educacionHasta %></option>
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtEducacionTitulo" name="txtEducacionTitulo" value="<%= educacion.educacionTitulo %>" disabled>
+									</div>
+							</div>	
+							<% });  %>
+					
+							</div>
+						</div>
+						<div class="row">
+							<div class="panel-container">
+
+							<div class="panel-head" id="certification">
+								<h4>Certificaciones</h4>
+							</div>
+							<div class="panel-form">
+								<form action="/certificacion/crear" method="POST">
+									<div>
+										<input class="panel-control" type="text" id="txtCertificacionInstituto" name="txtCertificacionInstituto" placeholder="Instituto">
+									</div>
+									<div>
+										<select class="panel-control-select" id="selCertificacionDesde" name="selCertificacionDesde">
+											<option value="0">Desde</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+							            <select class="panel-control-select" id="selCertificacionHasta" name="selCertificacionHasta">
+							            	<option value="0">Hasta</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtCertificacionTitulo" name="txtCertificacionTitulo" placeholder="Título">
+									</div>
+									<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+							</div>
+							<% _.each(certificacion,function(certificacion){ %>	
+							<div class="panel-form">
+									<div>
+										<input class="panel-control" type="text" id="txtCertificacionInstituto" name="txtCertificacionInstituto" value="<%= certificacion.certificacionInstituto %>">
+									</div>
+									<div>
+										<select class="panel-control-select" id="selCertificacionDesde" name="selCertificacionDesde">
+							                <option value="<%= certificacion.certificacionDesde %>"><%= certificacion.certificacionDesde %></option>
+							            </select>
+							            <select class="panel-control-select" id="selCertificacionHasta" name="selCertificacionHasta">
+							                <option value="<%= certificacion.certificacionHasta %>"><%= certificacion.certificacionHasta %></option>
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtCertificacionTitulo" name="txtCertificacionTitulo" value="<%= certificacion.certificacionTitulo %>">
+									</div>
+							</div>	
+							<% });  %>
+					
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="panel-container">
+
+							<div class="panel-head" id="course">
+								<h4>Cursos</h4>
+							</div>
+							<div class="panel-form">
+								<form action="/curso/crear" method="POST">
+									<div>
+										<input class="panel-control" type="text" id="txtCursoInstituto" name="txtCursoInstituto" placeholder="Instituto">
+									</div>
+									<div>
+										<select class="panel-control-select" id="selCursoDesde" name="selCursoDesde">
+							                <option value="0">Desde</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+							            <select class="panel-control-select" id="selCursoHasta" name="selCursoHasta">
+							                <option value="0">Hasta</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtCursoTitulo" name="txtCursoTitulo" placeholder="Título">
+									</div>
+									<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+							</div>
+							<% _.each(curso,function(curso){ %>	
+							<div class="panel-head">
+									<div>
+										<input class="panel-control" type="text" id="txtCursoInstituto" name="txtCursoInstituto" value="<%= curso.cursoInstituto %>" disabled>
+									</div>
+									<div>
+										<select class="panel-control-select" id="selCursoDesde" name="selCursoDesde" disabled>
+							                <option value="<%= curso.cursoDesde %>"><%= curso.cursoDesde %></option>
+							            </select>
+							            <select class="panel-control-select" id="selCursoHasta" name="selCursoHasta" disabled>
+							                <option value="<%= curso.cursoHasta %>"><%= curso.cursoHasta %></option>
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtCursoTitulo" name="txtCursoTitulo" value="<%= curso.cursoTitulo %>" disabled>
+									</div>
+							</div>	
+							<% });  %>							
+						</div>
+					</div>
+
+
+
+						<div class="row">
+							<div class="panel-container">
+
+							<div class="panel-head" id="award">
+								<h4>Reconocimientos</h4>
+							</div>
+							<div class="panel-form">
+								<form action="/reconocimiento/crear" method="POST">
+									<div>
+										<input class="panel-control" type="text" id="txtReconocimientoEmisor" name="txtReconocimientoEmisor" placeholder="Emisor">
+									</div>
+									<div>
+										<select class="panel-control-select" id="selReconocimientoFecha" name="selReconocimientoFecha">
+							                <option value="0">Fecha</option>
+							                <% for(var i=date;i>1950;i--){ %>
+											<option value='<%= i%>' ><%= i%> </option>
+									        <% }%> 
+							            </select>
+						            </div>
+						            <div>
+										<input class="panel-control" type="text" id="txtReconocimientoTitulo" name="txtReconocimientoTitulo" placeholder="Título">
+									</div>
+									<div>
+										<input class="panel-control" type="text" id="txtReconocimientoDescripcion" name="txtReconocimientoDescripcion" placeholder="Descripción">
+									</div>
+									<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+							</div>
+							<% _.each(reconocimiento,function(reconocimiento){ %>	
+							<div class="panel-form">
+								<div>
+									<input class="panel-control" type="text" id="txtReconocimientoEmisor" name="txtReconocimientoEmisor" value="<%= reconocimiento.reconocimientoEmisor %>" disabled>
+								</div>
+								<div>
+									<select class="panel-control-select" id="selReconocimientoFecha" name="selReconocimientoFecha" disabled>
+						                <option value="<%= reconocimiento.reconocimientoFecha %>" ><%= reconocimiento.reconocimientoFecha %></option>
+						            </select>
+					            </div>
+					            <div>
+									<input class="panel-control" type="text" id="txtReconocimientoTitulo" name="txtReconocimientoTitulo" value="<%= reconocimiento.reconocimientoTitulo %>" disabled>
+								</div>
+								<div>
+									<input class="panel-control" type="text" id="txtReconocimientoDescripcion" name="txtReconocimientoDescripcion" value="<%= reconocimiento.reconocimientoDescripcion %>" disabled>
+								</div>
+							</div>	
+							<% });  %>
+					
+							</div>
+						</div>
+
+						<div class="row">
+						<div class="panel-container">
+
+							<div class="panel-head">
+								<ul id="interestList">
+									<% _.each(etiqueta,function(etiqueta){ %>
+									<li data-id="<%= etiqueta.id %>">
+										<a data-name="<%= etiqueta.etiquetaNombre %>">
+											<%= etiqueta.etiquetaNombre.toUpperCase() %>
+										</a>
+									</li>
+									<% });  %>
+								</ul>
+							</div>
+							<div id="addInterest">
+								<form action="/usuarioetiqueta/crear" method="POST">
+									<input class="panel-control" type="text" class="form-control" id="txtUsuarioEtiqueta" name="txtUsuarioEtiqueta" placeholder="Escribe tus intereses" />
+          							<a href="#" onclick="$(this).closest('form').submit()"><span id="panel-control-send"></span></a>
+								</form>
+								<input type="hidden" name="hfUsuarioEtiqueta" id="hfUsuarioEtiqueta" value="<%= usuarioetiqueta %>">
+								<textarea type="text" class="form-control" id="textareaUsuarioEtiqueta" name="textareaUsuarioEtiqueta" placeholder="Tus intereses son..." /><%= usuarioetiqueta%></textarea>
+							</div>	
+							<div>
+
+							</div>
+						</div>
+					</div>
+
+<!--
+
+				<form class="form-horizontal formulario" enctype="multipart/form-data" method="POST" action="/usuario/cargaravatar">
+					<div class="form-header">
+						<h3>Información</h3>
+					</div>
+					<div class="form-body">
+						<div class="control-group">
+							<textarea class="control" row="4" id="txtUsuarioExtracto" name="txtUsuarioExtracto" placeholder="Escribe una breve descripción de ti mismo"></textarea>
+						</div>
+						<div class="control-group">
+							<label for="lblUsuarioNombre"><%=usuario.usuarioNombre+' '+usuario.usuarioApellido %></label>
+							<label for="lblUsuarioCargo"><%=usuario.usuarioCargo %></label>
+							<label for="lblUsuarioDepartamento"><%=usuario.usuarioDepartamento %></label>
+						</div>
+
+
+						<div class="control-group">
+							<h4>Información de contacto</h4>
+							<input type="text" id="txtUsuarioTelefono" name="txtUsuarioTelefono" value="04260000000">
+							<input type="text" id="txtUsuarioTelefonoHabitacion" name="txtUsuarioTelefonoHabitacion" value="02610000000">
+							<input type="email" id="txtUsuarioCorreo" name="txtUsuarioCorreo" >
+							<textarea class="control" row="2" id="txtUsuarioDireccion" name="txtUsuarioDireccion" placeholder="Dirección"></textarea>
+						</div>
+						<div class="control-group">
+							<h4>Experiencia laboral</h4>
+							<input type="text" id="txtExperienciaLaboralEmpresa" name="txtExperienciaLaboralEmpresa" value="THECC">
+							<input type="text" id="txtExperienciaLaboralPeriodo" name="txtExperienciaLaboralPeriodo" value="2016">
+							<input type="text" id="txtExperienciaLaboralCargo" name="txtExperienciaLaboralCargo" value="Analista">
+						</div>
+						<div class="control-group">
+							<h4>Educación</h4>
+							<input type="text" id="txtEducacionInstituto" name="txtEducacionInstituto" value="LUZ">
+							<input type="text" id="txtEducacionPeriodo" name="txtEducacionPeriodo" value="2014">
+							<input type="text" id="txtEducacionTitulo" name="txtEducacionTitulo" value="Licenciado en computación">
+						</div>
+						<div class="control-group">
+							<h4>Certificaciones</h4>
+							<input type="text" id="txtCertificacionInstituto" name="txtCertificacionInstituto" value="URBE">
+							<input type="text" id="txtCertificacionPeriodo" name="txtCertificacionPeriodo" value="2014">
+							<input type="text" id="txtCertificacionTitulo" name="txtCertificacionTitulo" value="CCNA">
+						</div>
+						<div class="control-group">
+							<h4>Cursos</h4>
+							<input type="text" id="txtCursoInstituto" name="txtCursoInstituto" value="CEVAZ">
+							<input type="text" id="txtCursoPeriodo" name="txtCursoPeriodo" value="2011">
+							<input type="text" id="txtCursoTitulo" name="txtCursoTitulo" value="Inglés para adultos">
+						</div>
+						<div class="control-group">
+							<h4>Reconocimientos</h4>
+							<input type="text" id="txtReconocimientoEmisor" name="txtReconocimientoEmisor" value="THECC">
+							<input type="text" id="txtReconocimientoFecha" name="txtReconocimientoFecha" value="2011">
+							<input type="text" id="txtReconocimientoTitulo" name="txtCursoTitulo" value="Calidad">
+							<textarea class="control" row="2" id="txtReconocimientoDescripcion" name="txtReconocimientoDescripcion" placeholder="Descripcion"></textarea>
+						</div>
+						<div class="control-group">
+							<div class="button-container">
+								<input type="submit"><span>Guardar</span></button>
+							</div>
+						</div>
+					</div>
+				</form>-->
+			</div>
+		</div>
+	</div>

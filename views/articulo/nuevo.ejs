@@ -1,0 +1,69 @@
+<div class="container" id="main-content">
+  <% if(flash && flash.err){ %>
+  <ul class="alert alert-success">
+    <% Object.keys(flash.err).forEach(function(error){ %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+  <div class="row">
+    <div class="col-sm-8 col-xs-12 col-sm-offset-2">
+      <form class="form-horizontal formulario" enctype="multipart/form-data" action="crear" method="POST">
+        <div class="form-header">
+        	<h3>Artículo</h3>
+        </div>
+        <div class="form-body">
+          <div class="control-group">
+            <div class="input-container">
+              <input type="input" name="txtArticuloTitulo" id="txtArticuloTitulo" required/>
+              <label for="txtArticuloTitulo">Titulo</label>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="control-group">
+              <textarea class="control" rows="14
+              " id="txtArticuloContenido" name="txtArticuloContenido" placeholder="Escribe el contenido del artículo aquí"></textarea>
+          </div>
+          <div class="control-group">
+            <input type="text" class="form-control" id="txtArticuloEtiqueta" name="txtArticuloEtiqueta" placeholder="Etiqueta tu artículo aquí..." />
+          </div>
+          <div class="control-group">
+            <div class="col-sm-5 col-xs-12">
+              <div class="btn-group" role="group" aria-label="Privacidad">
+                <button type="button" class="btn btn-default" id="everyone">
+                <img src="/images/ico-light-blue-world.png" width="32" class="img-responsive" alt="Enviar a todo público">
+                </button>
+                <button type="button" class="btn btn-default" id="target">
+                <img src="/images/ico-light-blue-target.png" width="32" class="img-responsive" alt="Enviar a público interesado">
+                </button>
+                <button type="button" class="btn btn-default" id="teamwork">
+                <img src="/images/ico-light-blue-teamwork.png" width="32" class="img-responsive" alt="Enviar a tu equipo de trabajo">
+                </button>
+                <button type="button" class="btn btn-default" id="department">
+                <img src="/images/ico-light-blue-department.png" width="32" class="img-responsive" alt="Enviar a tu departamento">
+                </button>
+                <input type="hidden" name="hfArticuloPrivacidad" id="hfArticuloPrivacidad">
+              </div>
+            </div> 
+            <div class="control-group visible-xs-inline-block"></div>
+              <label id="fil-item-add-file" class="col-sm-2">Archivo</label>
+              <div class="col-sm-5 col-xs-12">
+                <span>
+                  <input name="articuloAdjunto" id="articuloAdjunto" placeholder="Seleccionar archivo" disabled="disabled" />
+                  <div class="fileUpload">
+                    <span>Upload</span>
+                    <input id="filArticuloAdjunto" name="filArticuloAdjunto" type="file" class="upload" />
+                  </div>
+                </span>
+              </div>
+          </div>
+          <div class="control-group">
+            <div class="button-container">
+              <button type="submit"><span>Guardar</span></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

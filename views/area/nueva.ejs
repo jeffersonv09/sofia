@@ -1,0 +1,46 @@
+<div class="container" id="main-content">
+  <% if(flash && flash.err){ %>
+  <ul class="alert alert-success">
+    <% Object.keys(flash.err).forEach(function(error){ %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+  <div class="row">
+    <div class="col-sm-8 col-xs-12 col-sm-offset-2">
+      <form class="form-horizontal formulario" role="form" enctype="multipart/form-data" action="crear" method="POST">
+        <div class="form-header">
+          <h3>Área</h3>
+        </div>
+        <div class="form-body">
+          <div class="control-group">
+            <div class="input-container col-sm-8 col-sm-offset-2">
+              <input type="input" name="txtAreaNombre" id="txtAreaNombre" required="required"/>
+              <label for="txtAreaNombre">Nombre</label>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="control-group">
+              <div class="col-sm-3 col-sm-offset-2">
+                <label for="">Adjunta imagen</label>
+              </div>
+              <div class="col-sm-6">
+                <span>
+                  <input id="txtAreaNombreImagen" name="txtAreaNombreImagen" placeholder="Seleccionar archivo" disabled="disabled" />
+                  <div class="fileUpload">
+                    <span>Upload</span>
+                    <input id="filAreaImagen" name="filAreaImagen" type="file" class="upload" />
+                  </div>
+                </span>
+              </div>
+            </div>
+          <div class="control-group">
+            <div class="button-container">
+              <button type="submit"><span>Guardar</span></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

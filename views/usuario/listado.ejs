@@ -1,0 +1,82 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+
+			<% if(usuarios.length === 0){ %>
+			<div class="info-msg">
+				<div class="centered-text frame">
+		    		<img src="/images/ico-light-blue-user.png">
+		    		<h4>No se encuentraron usuarios registrados</h4>
+		    		<a class="btn btn-light-blue" href="/usuario/nuevo">Crear usuario</a>
+		    		</div>
+	    	</div>
+			<% } else{ %>	
+			
+			<div class="topic-list">
+				<div class="topic-list-header">
+					<h3><span class="glyphicon glyphicon-user"></span> Usuarios
+					<a href="/usuario/nuevo"><span id="ico-add"></span></a>
+						<div class="pull-right">
+							<form class="form-topic-list" method="POST" action="ordenar">
+								<label for="listausuarioOrdenar">Ordenar por</label>
+								<select id="listausuarioOrdenar" name="listausuarioOrdenar">
+									<option>Nombre</option>
+									<option>Fecha</option>
+									<option>Autor</option>
+								</select>
+							</form>
+						</div>
+					</h3>
+				</div>
+				<table class="table table-striped ">
+					<thead>
+						<tr>
+							<td>Usuario</td>
+							<td>Nombre</td>
+							<td>Apellido</td>
+							<td>Departamento</td>
+							<td>Campaña</td>
+							<td>Rol</td>
+							<td>Correo</td>
+							<td>Telefono</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+					<%  _.each(usuarios,function(usuario){ %>		
+					<tr>
+						<td><%= usuario.usuario %></td>
+						<td><%= (usuario.usuarioNombre == null ? '' : usuario.usuarioNombre) %></td>
+						<td><%= (usuario.usuarioApellido == null ? '' : usuario.usuarioApellido) %></td>
+						<td><%= (usuario.usuarioDepartamento == null ? '' : usuario.usuarioDepartamento) %></td>
+						<td><%= (usuario.usuarioCampana == null ? '' : usuario.usuarioCampana) %></td>
+						<td><%= (usuario.usuarioRol == null ? '' : usuario.usuarioRol) %></td>
+						<td><%= (usuario.usuarioCorreo == null ? '' : usuario.usuarioCorreo) %></td>
+						<td><%= (usuario.usuarioTelefono1 == null ? '' : usuario.usuarioTelefono1) %></td>
+						<td>
+							<a href="/usuario/perfil/<%= usuario.id %>">
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							</a>
+						</td>
+						<td>
+							<a href="/usuario/editar/<%= usuario.id %>">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+						</td>
+						<td>
+							<a href="/usuario/eliminar/<%= usuario.id %>">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>					
+					<% }); } %>
+					</tbody>
+				</table>
+			</div>
+			
+		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,163 @@
+<div class="container" id="main-content">
+  <% if(flash && flash.err){ %>
+  <ul class="alert alert-success">
+    <% Object.keys(flash.err).forEach(function(error){ %>
+    <li><%- JSON.stringify(flash.err[error]) %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+  <div class="row">
+    <div class="col-sm-8 col-xs-12 col-sm-offset-2">
+      <form class="form-horizontal formulario" enctype="multipart/form-data" action="crear" method="POST">
+        <div class="row">
+          <ul class="nav nav-tabs">
+            <li id="tab-msg" role="presentation" class="active">
+              <a href="#">
+                <img src="/images/ico-light-blue-msg.png" width="32" class="img-responsive">
+              </a>
+            </li>
+            <li id="tab-item" role="presentation">
+              <a href="#">
+                <img src="/images/ico-light-blue-edit-line.png" width="32" class="img-responsive">
+              </a>
+            </li>
+            <li id="tab-image" role="presentation">
+              <a href="#">
+                <img src="/images/ico-light-blue-picture.png" width="32" class="img-responsive">
+              </a>
+            </li>
+            <li id="tab-file" role="presentation">
+              <a href="#">
+                <img src="/images/ico-light-blue-upload-folder.png" width="32" class="img-responsive">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="form-body">
+          <input type="hidden" name="hfPublicacionTipo" id="hfPublicacionTipo" value="4">
+          <div id="tab-file-msg">
+            <div class="control-group">
+              <textarea class="control" rows="4
+              " id="txtPublicacionContenido" name="txtPublicacionContenido" placeholder="¿Qué novedades hay?"></textarea>
+            </div>
+          </div>
+          <div class="control-group item-controls">
+            <div class="input-container">
+              <input type="input" name="txtPublicacionTitulo" id="txtPublicacionTitulo" />
+              <label for="txtPublicacionTitulo">Titulo</label>
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div id="tab-item-content">
+            <div class="control-group">
+              <textarea class="control" rows="14
+              " id="txtPublicacionContenido" name="txtPublicacionContenido" placeholder="Escribe el contenido del artículo aquí"></textarea>
+            </div>
+          </div>
+          <div id="tab-file-content">
+            <div class="control-group">
+              <textarea class="control" rows="4
+              " id="txtPublicacionDescripcion" name="txtPublicacionDescripcion" placeholder="Escribe la descripción del artículo aquí"></textarea>
+            </div>
+          </div>
+
+          <!--
+          <div class="control-group">
+            <div class="input-container">
+              <input type="input" name="txtPublicacionEtiqueta" id="txtPublicacionEtiqueta" required="required"/>
+              <label for="txtPublicacionEtiqueta">Etiquetas</label>
+              <div class="bar"></div>
+            </div>
+          </div>-->
+          <div class="item-controls">
+            <input type="text" class="form-control" id="txtPublicacionEtiqueta" name="txtPublicacionEtiqueta" placeholder="Etiqueta tu publicación aquí..." />
+          </div>
+
+          <div class="control-group item-controls">
+            <label for="selPublicacionArea" class="col-sm-2">Área</label>
+            <div class="col-sm-4">
+              <select class="control" id="selPublicacionArea" name="selPublicacionArea" data-live-search="true">
+               <option value="0">Área</option>
+               <% _.each(area,function(area){ %>  
+                   <option value= <%= area.id %> >
+                      <%= area.areaNombre %>
+                   </option>
+               <% }) %>
+              </select>
+              </select>
+            </div>
+            <label for="selPublicacionCategoria" class="col-sm-2">Categoría</label>
+            <div class="col-sm-4">
+              <select class="control" id="selPublicacionCategoria" name="selPublicacionCategoria" data-live-search="true">
+                <option value="0">Categoría</option>
+                <% _.each(categoria,function(categoria){ %>  
+                   <option value= <%= categoria.id %> >
+                      <%= categoria.categoriaNombre %>
+                   </option>
+               <% }) %>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="col-sm-5 col-xs-12">
+              <div class="btn-group" role="group" aria-label="Difusión">
+                <button type="button" class="btn btn-default" id="everyone">
+                <img src="/images/ico-light-blue-world.png" width="32" class="img-responsive" alt="Enviar a todo público">
+                </button>
+                <button type="button" class="btn btn-default" id="target">
+                <img src="/images/ico-light-blue-target.png" width="32" class="img-responsive" alt="Enviar a público interesado">
+                </button>
+                <button type="button" class="btn btn-default" id="teamwork">
+                <img src="/images/ico-light-blue-teamwork.png" width="32" class="img-responsive" alt="Enviar a tu equipo de trabajo">
+                </button>
+                <button type="button" class="btn btn-default" id="department">
+                <img src="/images/ico-light-blue-department.png" width="32" class="img-responsive" alt="Enviar a tu departamento">
+                </button>
+                <input type="hidden" name="hfPublicacionDifusion" id="hfPublicacionDifusion">
+              </div>
+            </div> 
+            <div class="control-group visible-xs-inline-block"></div>
+            <label id="fil-item-add-img" class="col-sm-2">Imagen</label>
+              <label id="fil-item-add-file" class="col-sm-2">Archivo</label>
+              <div class="col-sm-5 col-xs-12">
+                <span>
+                  <input name="adjunto2" id="adjunto2" placeholder="Seleccionar archivo" disabled="disabled" />
+                  <div class="fileUpload">
+                    <span>Upload</span>
+                    <input id="filPublicacionAdjunto2" name="filPublicacionAdjunto2" type="file" class="upload" />
+                  </div>
+                </span>
+              </div>
+          </div>
+
+          <div id="tab-file-content" class="item-controls">
+
+            <div class="control-group">
+              <div class="col-sm-2 col-sm-offset-2">
+                <label id="fil-item-image">Adjunta imagen</label>
+                <label id="fil-item-upload">Adjunta contenido</label>
+              </div>
+              <div class="col-sm-6">
+                <span>
+                  <input id="adjunto1" name="adjunto1" placeholder="Seleccionar archivo" disabled="disabled" />
+                  <div class="fileUpload">
+                    <span>Upload</span>
+                    <input id="filPublicacionAdjunto1" name="filPublicacionAdjunto1" type="file" class="upload" />
+                  </div>
+                </span>
+              </div>
+            </div>
+
+          </div>
+ 
+          <div class="control-group">
+            <div class="button-container">
+              <button type="submit"><span>Publicar</span></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
