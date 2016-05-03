@@ -221,5 +221,7 @@ $(document).ready(function(){
 		$("#my-profile").show("slow");
 		$("#change-my-profile").hide();
 	});
+
+
 		
 }); //fin custom.js
