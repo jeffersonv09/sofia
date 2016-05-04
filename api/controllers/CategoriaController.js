@@ -28,17 +28,20 @@ module.exports = {
 				return redirect('categoria/nueva');
 			} 
 
+			var carpetaDestino='categoria';
+		    var pathString= sails.config.appPath+'/assets/images/'+carpetaDestino+'/';
+
 			req.file('filCategoriaImagen').upload({
-    			dirname: '../../assets/images/categoria'
+    			dirname: pathString
 		    },function (err, categoriaImagen) {
 		      if (err)
 		        console.log('err'+err);
 		      if (categoriaImagen.length > 0){
 		      	console.log(categoriaImagen.length);
 		        Categoria.update(categoria.id,{
-		          categoriaImagenUrl: require('util').format('%s/categoria/%s', sails.getBaseUrl(), categoriaImagen[0].fd.substring(49,categoriaImagen[0].fd.length)),
+		          categoriaImagenUrl: require('util').format('%s/%s/%s', sails.getBaseUrl(), carpetaDestino, categoriaImagen[0].fd.substring(pathString.length,categoriaImagen[0].fd.length)),
 		          categoriaImagenFd: categoriaImagen[0].fd,
-		          categoriaImagenPath: '/images/categoria/'+categoriaImagen[0].fd.substring(49,categoriaImagen[0].fd.length)
+		          categoriaImagenPath: '/images/'+carpetaDestino+'/'+categoriaImagen[0].fd.substring(pathString.length,categoriaImagen[0].fd.length)
 		        })
 		        .exec(function (err){
 		          if (err) console.log('err'+err);
@@ -82,7 +85,14 @@ module.exports = {
 				categoria: categoria
 			});
 		});
-
-	}
+	},
+	index: function(req, res, next){
+	    Categoria.find({categoriaHabilitarLectura:1},function (err, categorias){
+	      if(err) next(err);
+	      res.view({
+	        categorias: categorias
+	      });
+	    });
+  	}
 };
 

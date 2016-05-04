@@ -105,7 +105,7 @@ module.exports = {
 
 		});//usuario
 	},
-  listado: function(req, res, next){
+  index: function(req, res, next){
     Usuario.find({usuarioActivo:1},function (err, usuarios){
       if(err) next(err);
       res.view({
@@ -124,8 +124,7 @@ module.exports = {
 	},
 	cargaravatar: function  (req, res) {
     var carpetaDestino='/images/avatar';
-    var pathString=sails.config.appPath+carpetaDestino+'/'
-    console.log(pathString);
+    var pathString=sails.config.appPath+'/assets'+carpetaDestino+'/'
     req.file('avatar').upload({
     	//dirname: require('path').resolve(sails.config.appPath, '/assets/images/avatar')
       dirname: pathString
@@ -148,7 +147,6 @@ module.exports = {
 
     Usuario.findOneById(req.session.Usuario.id).exec(function usuarioEncontrado(err, usuario){
           if(err) console.log(err);
-          console.log(usuario);
           req.session.Usuario= usuario;
         });
         return res.redirect('/usuario/miperfil');

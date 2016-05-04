@@ -1,0 +1,64 @@
+<div class="container" id="main-content">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+
+			<% if(categorias.length === 0){ %>
+			<div class="info-msg">
+				<div class="centered-text frame">
+		    		<img src="/images/ico-light-blue-folder.png">
+		    		<h4>No se encuentraron áreas registradas</h4>
+		    		<a class="btn btn-light-blue" href="/categoria/nueva">Crear área</a>
+		    		</div>
+	    	</div>
+			<% } else{ %>	
+			
+			<div class="topic-list">
+				<div class="topic-list-header">
+					<h3><span class="glyphicon glyphicon-folder-open"></span> Área
+						<a href="/categoria/nueva"><span id="ico-add"></span></a>
+					</h3>
+				</div>
+				<table class="table table-striped ">
+					<thead>
+						<tr>
+							<td>Nombre</td>
+							<td>Fecha creación</td>
+							<td>Propietario</td>
+							<td>Imagen</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+					<%  _.each(categorias,function(categoria){ %>		
+					<tr>
+						<td><%= (categoria.categoriaNombre == null ? '' : categoria.categoriaNombre) %></td>
+						<td><%= categoria.createdAt %> </td>
+						<td><%= categoria.idUsuario %></td>
+						<td>
+							<img width="64px" src="<%= categoria.categoriaImagenPath %>" alt="<%= (categoria.categoriaNombre == null ? '' : categoria.categoriaNombre) %>" >
+						</td>
+						<td>
+							<a href="/categoria/mostrar/<%= categoria.id %>">
+								<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							</a>
+						</td>
+						<td>
+							<a href="/categoria/editar/<%= categoria.id %>">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+						</td>
+						<td>
+							<a href="/categoria/eliminar/<%= categoria.id %>">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>					
+					<% }); } %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

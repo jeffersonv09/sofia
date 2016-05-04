@@ -11,35 +11,36 @@
 			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
 			 <ul class="nav bs-docs-sidenav">
 			  <li class="">
-			   <a href="articulo/nuevo">Usuarios</a>
-			    <ul class="nav">
+			   <a href="/usuario/index">Usuarios</a>
+			    <!--<ul class="nav">
 			     <li class=""><a href="#js-individual-compiled">Individual or compiled</a></li>
 			     <li><a href="#js-data-attrs">Data attributes</a></li> 
 			     <li class=""><a href="#js-programmatic-api">Programmatic API</a></li> 
-			    </ul>
+			    </ul>-->
 			   </li> 
-			   <li><a href="#modals">Área</a> 
-			   <li><a href="#transitions">Categoría</a></li> 
-			   <li><a href="#modals">Sección</a> 
-			   	<ul class="nav"> 
-			   		<li><a href="#modals-examples">Example</a></li> 
-			   		<li><a href="#modals-sizes">Example</a></li> 
-			   		<li><a href="#modals-remove-animation">Example</a></li> 
-			   		<li><a href="#modals-related-target">Example</a></li> 
-			   		<li><a href="#modals-usage">Example</a></li> 
-			   	</ul> 
-			   </li> 
-			   <li><a href="#modals">Artículos</a> 
-			   	<ul class="nav"> 
-			   		<li><a href="#modals-examples">Example</a></li> 
-			   		<li><a href="#modals-sizes">Example</a></li> 
-			   	</ul> 
-			   </li> 
+			   <li><a href="/area/index">Áreas</a> 
+			   <li><a href="/categoria/index">Categorías</a></li> 
+			   <li><a href="/articulo/index">Publicaciones</a></li> 
+			   <li><a href="/seccion/index">Secciones</a></li> 
+			   <li><a href="/articulo/index">Artículos</a></li> 
 			</ul> 
 			<a class="back-to-top" href="#top"> Subir </a> 
 			</nav>
 		</div>
 		<div class="col-sm-9" role="main">
+			<div>
+		        <canvas id="canvas"></canvas>
+		    </div>
+		    <br>
+		    <br>
+		    <button class="btn btn-light-blue" id="randomizeData">Randomize Data</button>
+		    <button class="btn btn-light-blue" id="addDataset">Add Dataset</button>
+		    <button class="btn btn-light-blue" id="removeDataset">Remove Dataset</button>
+		    <button class="btn btn-light-blue" id="addData">Add Data</button>
+		    <button class="btn btn-light-blue" id="removeData">Remove Data</button>
+			<br>
+		    <br>
+
 			<div class="panel-item">
     			<a href="/usuario/listado"><img src="/images/ico-light-blue-user.png"></a>
     			<h4>Usuarios</h4>
@@ -63,11 +64,11 @@
 	    	<div class="panel-item">
 				<a href="/usuario/index"><img src="/images/ico-light-blue-like.png"></a>
     			<h4>Likes</h4>
-	    	</div>
+	    	</div><!--
 	    	<div class="panel-item">
 				<a href="/usuario/index"><img src="/images/ico-light-blue-pin.png"></a>
     			<h4>Pin</h4>
-	    	</div>
+	    	</div>-->
 		</div>
 	</div>
 </div>

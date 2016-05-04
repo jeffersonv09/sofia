@@ -7,7 +7,10 @@
 
 module.exports = {
 	nuevo:function(req,res){
-		res.view();	
+		Seccion.find({seccionHabilitarLectura:1}).exec( function (err, secciones){
+			res.view({secciones: secciones});	
+		});
+		
 	},
 	crear:function(req,res){
 	console.log( 'req'+req.session.Seccion.id);
@@ -16,7 +19,7 @@ module.exports = {
 			articuloContenido: req.param("txtArticuloContenido"),
 			articuloPrivacidad: req.param("hfArticuloPrivacidad"),
 			articuloAutor: req.session.Usuario.id,
-			idSeccion: req.session.Seccion.id
+			idSeccion: req.param("selArticuloSeccion")
 		}
 		Articulo.create(objArticulo).exec(function (err,articulo){
 			if(err){
@@ -29,19 +32,21 @@ module.exports = {
 
 			res.redirect('articulo/mostrar/'+articulo.id);
 
+			var carpetaDestino='articuloAdjunto';
+    		var pathString=sails.config.appPath+'/assets/'+carpetaDestino+'/'
+
 			req.file('filArticuloAdjunto').upload({
-    			dirname: '../../assets/articuloAdjunto'
+    			dirname: pathString
 		    },function (err, articuloAdjunto) {
-		    	console.log("entro");
 		      if (err)
 		        console.log('err'+err);
 
 		      if (articuloAdjunto.length > 0){
 
 		        Articulo.update(articulo.id,{
-		          articuloAdjuntoUrl: require('util').format('%s/articuloAdjunto/%s', sails.getBaseUrl(), articuloAdjunto[0].fd.substring(48,articuloAdjunto[0].fd.length)),
+		          articuloAdjuntoUrl: require('util').format('%s/%s/%s', sails.getBaseUrl(), carpetaDestino, articuloAdjunto[0].fd.substring(pathString.length,articuloAdjunto[0].fd.length)),
 		          articuloAdjuntoFd: articuloAdjunto[0].fd,
-		          articuloAdjuntoPath: '/articuloAdjunto/'+articuloAdjunto[0].fd.substring(48,articuloAdjunto[0].fd.length)
+		          articuloAdjuntoPath: '/'+carpetaDestino+'/'+articuloAdjunto[0].fd.substring(pathString.length,articuloAdjunto[0].fd.length)
 		        })
 		        .exec(function (err){
 		          if (err) console.log('err'+err);

@@ -4,29 +4,27 @@
       <div class="row light-blue">
         <% if(publicacion.publicacionTipo == '4'){ %>
         <div class="item-header">
-          <h3> </h3>
-          <img class="img-responsive" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre %>">
+          <h3>
+          <img class="img-responsive" src="<%= publicacion.autor.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre %>">
+          </h3>
         </div>
-        <div id="test"><%= JSON.stringify(publicacion.publicacionContenido) %></div>
-        <div class="item-content" id="item-content">
-
-          
+        <div class="item-content">
+          <%= publicacion.publicacionContenido %>
         </div>
         <div class="item-footer">
           <div class="media-footer-info">
-              <div class="media-footer-info">
-              <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
-              <%= publicacion.createdAt %>
-            </div>
-            <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl1 %>"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } %>
+            <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
+            <%= publicacion.createdAt %>
+          </div>
+          <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl1 %>">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } %>
           <span id="media-footer-pin"></span>
           <span id="media-footer-comment"></span>
           <span id="media-footer-like"></span>
@@ -41,19 +39,18 @@
         </div>
         <div class="item-footer">
           <div class="media-footer-info">
-              <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
-              <%= publicacion.createdAt %>
-
-            </div>
-              <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl1 %>"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } %>
+            <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
+            <%= publicacion.createdAt %>
+          </div>
+          <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl1 %>">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } %>
           <span id="media-footer-pin"></span>
           <span id="media-footer-comment"></span>
           <span id="media-footer-like"></span>
@@ -72,18 +69,18 @@
         </div>
         <div class="item-footer">
           <div class="media-footer-info">
-              <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
-              <%= publicacion.createdAt %>
-            </div>
-            <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl1 %>"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } %>
+            <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
+            <%= publicacion.createdAt %>
+          </div>
+          <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl1 %>">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } %>
           <span id="media-footer-pin"></span>
           <span id="media-footer-comment"></span>
           <span id="media-footer-like"></span>
@@ -103,74 +100,72 @@
         </div>
         <div class="item-footer">
           <div class="media-footer-info">
-              <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
-              <%= publicacion.createdAt %>
-      
-            </div>
-            <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
-              <a href="<%= publicacion.publicacionAdjuntoUrl1 %>"> 
-                <span id="media-footer-download"></span>
-              </a>
-              <% } %>
+            <%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>,
+            <%= publicacion.createdAt %>
+            
+          </div>
+          <% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
+          <a href="<%= publicacion.publicacionAdjuntoUrl1 %>">
+            <span id="media-footer-download"></span>
+          </a>
+          <% } %>
           <span id="media-footer-pin"></span>
           <span id="media-footer-comment"></span>
           <span id="media-footer-like"></span>
         </div>
         <% } %>
-
-      </div>
+      </div> <!-- fin publicacion -->
       <div class="row">
         <div class="media comment">
-        <div class="media-left">
-          <img class="media-object img-circle" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre %>" height="50"> 
-        </div>
-        <div class="media-body">
-        <form method="POST" action="/comentario/nuevo" enctype="multipart/form-data">
-          <div class="control-group comment-content">
-                  <textarea class="control" rows="3" id="textareaComentarioContenido" name="textareaComentarioContenido" placeholder="¿Qué piensas al respecto?"></textarea>
-                </div>
-                <input type="hidden" id="hfPublicacion" name="hfPublicacion" value="<%= publicacion.id %>">
-                <div class="media-footer">
-                  <span id="comment-paperclic">
-                    <input type="file" name="filComentarioAdjunto" id="filComentarioAdjunto">
-                  </span>
-                  <a href="#" onclick="$(this).closest('form').submit()"><span id="comment-send"></span></a>
-                </div>
-        </form> 
-        </div>
-      </div>
-            <%_.each(publicacion.comentarios,function(comentario){ %>
-      <div class="media comment">
-        <div class="media-left">
-          <img class="media-object img-circle" src="<%= comentario.comentarista.avatarUrl %>" alt="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>" height="50">
-        </div>
-        <div class="media-body">
-          <div class="control-group comment-content">
-            <p><%= comentario.comentarioContenido %></p>
+          <div class="media-left">
+            <img class="media-object img-circle" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.usuarioNombre %>" height="50">
           </div>
-          <input type="hidden" value="<%= comentario.id %>">
-          <div class="media-footer">
-            <div class="media-footer-info">
-              <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>"><span id="media-footer-user"></span></a>
-              <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= comentario.createdAt.toLocaleDateString()+" "+comentario.createdAt.toLocaleTimeString() %>"><span id="media-footer-calendar"></span></a>
-              <% if(comentario.comentarioAdjuntoUrl != null){ %>
-              <a href="<%= comentario.comentarioAdjuntoUrl %>">
-                <span id="media-footer-download"></span>
-              </a>
-              <% } %>
+          <div class="media-body">
+            <form method="POST" action="/comentario/nuevo" enctype="multipart/form-data">
+              <div class="control-group comment-content">
+                <textarea class="control" rows="3" id="textareaComentarioContenido" name="textareaComentarioContenido" placeholder="¿Qué piensas al respecto?"></textarea>
+              </div>
+              <input type="hidden" id="hfPublicacion" name="hfPublicacion" value="<%= publicacion.id %>">
+              <div class="media-footer">
+                <span id="comment-paperclic">
+                  <input type="file" name="filComentarioAdjunto" id="filComentarioAdjunto">
+                </span>
+                <a href="#" onclick="$(this).closest('form').submit()"><span id="comment-send"></span></a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <%_.each(publicacion.comentarios,function(comentario){ %>
+        <div class="media comment">
+          <div class="media-left">
+            <img class="media-object img-circle" src="<%= comentario.comentarista.avatarUrl %>" alt="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>" height="50">
+          </div>
+          <div class="media-body">
+            <div class="control-group comment-content">
+              <p><%= comentario.comentarioContenido %></p>
             </div>
-            <span id="media-footer-pin"></span>
-            <span id="media-footer-like"></span>
+            <input type="hidden" value="<%= comentario.id %>">
+            <div class="media-footer">
+              <div class="media-footer-info">
+                <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= (comentario.comentarista.usuarioNombre == null ? '' : comentario.comentarista.usuarioNombre)+' '+(comentario.comentarista.usuarioApellido == null ? '' : comentario.comentarista.usuarioApellido) %>"><span id="media-footer-user"></span></a>
+                <a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= comentario.createdAt.toLocaleDateString()+" "+comentario.createdAt.toLocaleTimeString() %>"><span id="media-footer-calendar"></span></a>
+                <% if(comentario.comentarioAdjuntoUrl != null){ %>
+                <a href="<%= comentario.comentarioAdjuntoUrl %>">
+                  <span id="media-footer-download"></span>
+                </a>
+                <% } %>
+              </div>
+              <span id="media-footer-pin"></span>
+              <span id="media-footer-like"></span>
+            </div>
           </div>
-        </div>
-      </div>
-      <% });  %>
-      </div>
-
+        </div> <!-- fin nuevo comentario -->
+        <% });  %>
+      </div> <!-- fin comentario -->
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@ module.exports = {
 		res.view();
 	},
 	crear: function(req, res){
+		console.log(req.param("txtAreaNombre"));
 		var objArea={
 			areaNombre: req.param("txtAreaNombre"),
 			idUsuario: req.session.Usuario.id
@@ -92,6 +93,14 @@ module.exports = {
 				area: area
 			});
 		});
-	}
+	},
+	index: function(req, res, next){
+	    Area.find({areaHabilitarLectura:1},function (err, areas){
+	      if(err) next(err);
+	      res.view({
+	        areas: areas
+	      });
+	    });
+  	}
 };
 

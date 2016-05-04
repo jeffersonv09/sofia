@@ -1,6 +1,46 @@
 <div class="container" id="main-content">
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3 col-xs-12">
+		<div class="col-sm-3">
+			<!--<%_.each(publicacion,function(publicacion){ %>
+			<div class="favorite-container">
+				<div class="favorite-image">
+					<a href="/publicacion/mostrar/<%= publicacion.id %>">
+						<% if(publicacion.publicacionTipo == 4){ %>
+						<img src="<%= publicacion.autor.avatarUrl %>" alt="<%= publicacion.autor.avatarUrl %>" height="150">
+						<% } else if(publicacion.publicacionTipo == 2){ %>
+						<img src="<%= publicacion.publicacionAdjuntoUrl1 %>" alt="<%= publicacion.publicacionTitulo %>" height="150">
+						<% } else{ %>
+						<img src="<%= publicacion.publicacionAdjuntoUrl2 %>" alt="<%= publicacion.publicacionTitulo %>" height="150">
+						<% } %>
+					</a>
+				</div>
+				<div class="favorite-body">
+					<a href="/publicacion/mostrar/<%= publicacion.id %>">
+						<h4><%= publicacion.publicacionTitulo %></h4>
+					</a>
+					<div class="media-footer">
+						<div class="media-footer-info">
+							<a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= (publicacion.autor.usuarioNombre == null ? '' : publicacion.autor.usuarioNombre)+' '+(publicacion.autor.usuarioApellido == null ? '' : publicacion.autor.usuarioApellido) %>"><span id="media-footer-user"></span></a>
+							<a class="light-blue-tooltip" data-toggle="tooltip" data-placement="right" title="<%= publicacion.createdAt.toLocaleDateString()+" "+publicacion.createdAt.toLocaleTimeString() %>"><span id="media-footer-calendar"></span></a>
+							<% if((publicacion.publicacionTipo == 4 || publicacion.publicacionTipo == 2) && publicacion.publicacionAdjuntoUrl2 != null){ %>
+							<a href="<%= publicacion.publicacionAdjuntoUrl2 %>" target="_blank">
+								<span id="media-footer-download"></span>
+							</a>
+							<% } else if((publicacion.publicacionTipo == 1 || publicacion.publicacionTipo == 3) && publicacion.publicacionAdjuntoUrl1 != null){ %>
+							<a href="<%= publicacion.publicacionAdjuntoUrl1 %>">
+								<span id="media-footer-download"></span>
+							</a>
+							<% } %>
+						</div>
+						<span id="media-footer-pin"></span>
+						<span id="media-footer-comment"></span>
+						<span id="media-footer-like"></span>
+					</div>
+				</div>
+			</div>
+		<% }); %>-->
+		</div>
+		<div class="col-sm-6  col-xs-12">
 			<% if(publicacion.length === 0){ %>
 			<div class="info-msg">
 				<div class="centered-text frame">
@@ -24,7 +64,7 @@
 				<div class="media-left">
 					<a href="/publicacion/mostrar/<%= publicacion.id %>">
 						<% if(publicacion.publicacionTipo == 4){ %>
-						<img class="media-object img-circle" src="<%= req.session.Usuario.avatarUrl %>" alt="<%= req.session.Usuario.nombreUsuario %>" height="100">
+						<img class="media-object img-circle" src="<%= publicacion.autor.avatarUrl %>" alt="<%= req.session.Usuario.nombreUsuario %>" height="100">
 						<% } else if(publicacion.publicacionTipo == 2){ %>
 						<img class="media-object" src="<%= publicacion.publicacionAdjuntoUrl1 %>" alt="<%= publicacion.publicacionTitulo %>" height="150">
 						<% } else{ %>
@@ -83,6 +123,17 @@
 				</div>
 			</div>
 			<% }); } %>
+		</div>
+		<div class="col-sm-3"><!--
+			<div class="favorite-container">
+				<h3>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"</h3>
+			</div>
+			<div>
+				<img class="img-responsive" src="/images/anuncios/IMG-20160404-WA0000.jpg">
+			</div>
+			<div>
+			    <canvas id="canvas2"></canvas>
+			</div>-->
 		</div>
 	</div>
 </div>

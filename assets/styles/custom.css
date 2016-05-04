@@ -734,7 +734,7 @@ textarea.control {
   text-align: center; 
   display: inline-block;
   float: left;
-  border-right: thick solid #bfbfbf ;
+  border-right: thick solid #d8d8d8;
 }
 .panel-control{
   margin-top: 4px;
@@ -1047,4 +1047,22 @@ textarea.control {
 }
 .panel-item:hover{
   background-color: #d8d8d8;
+}
+
+.favorite-container{
+  padding: 10px;
+  display: block;
+  background-color: #f6f4f4;
+  color: #00aeef;
+  text-align: center;
+  border-bottom: thick solid #d8d8d8;;
+}
+.favorite-image{
+  /*text-align: center;*/
+}
+
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
